@@ -180,10 +180,14 @@ def key_func(key, x, y):
 
     global dvel
 
-    if key == 'c' or key == 'C':
+    # print(key)
+
+    if key == b'c' or key == b'C':
         clear_data()
-    if key == 'v' or key == 'V':
+    elif key == b'v' or key == b'V':
         dvel = not dvel
+    elif key == b'q':
+        sys.exit(-1)
 
 
 def mouse_func(button, state, x, y):
@@ -259,6 +263,7 @@ def open_glut_window():
     glutReshapeFunc(reshape_func)
     glutIdleFunc(idle_func)
     glutDisplayFunc(display_func)
+
 
 if __name__ == '__main__':
     glutInit(sys.argv)
