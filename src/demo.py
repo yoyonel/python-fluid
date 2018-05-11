@@ -41,9 +41,9 @@ N = 32
 size = N + 2
 
 dt = 0.1
-diff = 0.0
-visc = 0.0
-force = 5.0
+diff = 0.0000
+visc = 0.0000
+force = 2.0
 source = 100.0
 dvel = False
 
@@ -155,7 +155,7 @@ def get_from_UI(d, u, v):
     u[0:size, 0:size] = 0.0
     v[0:size, 0:size] = 0.0
 
-    if not mouse_down[GLUT_LEFT_BUTTON] and not mouse_down[GLUT_RIGHT_BUTTON]:
+    if not mouse_down[GLUT_LEFT_BUTTON] and not mouse_down[GLUT_RIGHT_BUTTON] and not mouse_down[GLUT_MIDDLE_BUTTON]:
         return
 
     i = int((mx / float(win_x)) * N + 1)
@@ -167,6 +167,9 @@ def get_from_UI(d, u, v):
     if mouse_down[GLUT_LEFT_BUTTON]:
         u[i, j] = force * (mx - omx)
         v[i, j] = force * (omy - my)
+
+    if mouse_down[GLUT_MIDDLE_BUTTON]:
+        d[i, j] = -source
 
     if mouse_down[GLUT_RIGHT_BUTTON]:
         d[i, j] = source
