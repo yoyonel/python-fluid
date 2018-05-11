@@ -21,12 +21,13 @@ How to use this demo:
   Clear the simulation by pressing the 'c' key
 """
 
-import psyco
+# import psyco
 import sys
-from numarray import Float64, zeros
+# from numarray import Float64, zeros
+from numpy import float64 as Float64, zeros
 from solver import vel_step, dens_step
 
-psyco.full()
+# psyco.full()
 
 try:
     from OpenGL.GLUT import *
